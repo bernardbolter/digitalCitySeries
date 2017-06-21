@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var HtmlWebpackPLugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require( 'copy-webpack-plugin');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './src/gateway.js',
@@ -29,15 +31,40 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({ filename: 'style.css', allChunks: true }),
-    new HtmlWebpackPLugin({
-      template: 'src/index.html'
-    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin()
+    new ExtractTextPlugin({ filename: 'style.css', allChunks: true }),
+    new HtmlWebpackPLugin({
+      template: 'src/index.html'
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new UglifyJSPlugin({
+      sourceMap: true,
+      beautify: false,
+      comments: false,
+      compress: {
+        warnings: false,
+        drop_console: true,
+        screw_ie8: true
+      },
+      mangle: {
+        except: [
+          '$', 'webpackJsonp'
+        ],
+        screw_ie8: true,
+        keep_fnames: true
+      },
+      output: {
+        comments: false,
+        screw_ie8: true
+      }
+    }),
+    new CopyWebpackPlugin([
+      { from: 'gfx', to: 'gfx'}
+    ])
   ]
 };
