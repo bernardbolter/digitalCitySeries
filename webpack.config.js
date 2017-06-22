@@ -27,6 +27,13 @@ module.exports = {
           presets: ['es2015', 'stage-0', 'react'],
           plugins: ['transform-runtime', 'transform-async-to-generator', 'transform-decorators-legacy']
         }
+      },
+      { 
+        test: /\.(png|jpg)$/,
+        loader: 'file-loader',
+        options: {
+          name: './gfx/[hash].[ext]'
+        }
       }
     ]
   },
@@ -62,9 +69,6 @@ module.exports = {
         comments: false,
         screw_ie8: true
       }
-    }),
-    new CopyWebpackPlugin([
-      { from: 'gfx', to: 'gfx'}
-    ])
+    })
   ]
 };

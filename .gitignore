@@ -1,4 +1,4 @@
 /node_modules
 /outbound
 .DS_Store
-/gfx
+src/gfx
