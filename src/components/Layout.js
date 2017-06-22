@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Hero from './hero/hero_entry';
-import Info from './info/info_entry';
-import Nav from './nav/nav_entry';
-import Art from './art/art_entry';
+import Hero from './hero/hero';
+import Info from './info/info';
+import Art from './art/art';
 
 export default class Layout extends React.Component {
 
