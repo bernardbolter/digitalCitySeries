@@ -1,8 +1,17 @@
-import { observable } from 'mobx';
+import { action, observable } from 'mobx';
 
 class infoStore {
-    @observable aboutButton = false;
-    @observable closeAbout = false;
+    @observable aboutSection = false;
+    @observable searchButton = false;
+
+    @action toggleAbout = () => {
+      this.aboutSection = !this.aboutSection;
+    }
+
+    @action toggleSearch = () => {
+      console.log('Search!');
+      this.searchButton = !this.searchButton;
+    }
 }
 
 var information = new infoStore;

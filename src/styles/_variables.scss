@@ -1,4 +1,9 @@
 // COLORS
 
-$background: #cdcdcd;
-$hero-background: #3c5753;
+$background: lighten( #cdcdcd, 50%);
+
+$text-color: #231f20;
+
+$header-color: #121212;
+$text-dark: lighten( $header-color, 20%);
+$text-light: lighten( $header-color, 50%);
