@@ -47,28 +47,5 @@ module.exports = {
     new HtmlWebpackPLugin({
       template: 'src/index.html'
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.AggressiveMergingPlugin(),
-    new UglifyJSPlugin({
-      sourceMap: true,
-      beautify: false,
-      comments: false,
-      compress: {
-        warnings: false,
-        drop_console: true,
-        screw_ie8: true
-      },
-      mangle: {
-        except: [
-          '$', 'webpackJsonp'
-        ],
-        screw_ie8: true,
-        keep_fnames: true
-      },
-      output: {
-        comments: false,
-        screw_ie8: true
-      }
-    })
   ]
 };

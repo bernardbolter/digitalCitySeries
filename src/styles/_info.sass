@@ -60,29 +60,38 @@
       margin: 0
       padding: 0
 
+.search
+  display: flex
+  flex-direction: row
+  justify-content: flex-end
+
 .info-search-on
   #search-right-line
     transition: all 300ms ease-in-out
-    transform: translate(-17px, 17px)
+    transform: translate(0px, 0px)
 
   #search-left-line
     transition: all 300ms ease-in-out
-    opacity: 0
+    opacity: 1
 
 .search-input
   display: none
+
+.search-input-on
+  display: block
 
 #search-button
   cursor: pointer
 
 #search-left-line
-  transition: all 300ms ease-in-out
-  opacity: 1
+  transition: all 300ms cubic-bezier(.37,0,.64,1)
+  opacity: 0
   stroke: $text-light
   stroke-width: 2
 
 #search-right-line
-  transition: all 300ms ease-in-out
+  transition: all 300ms cubic-bezier(.37,0,.64,1)
+  transform: translate(-17px, 17px)
   stroke: $text-light
   stroke-width: 2
 
@@ -98,23 +107,3 @@
 .about-superscript
     font-size: 8px
     vertical-align: super
-
-// CSS TRANSITION CLASSES
-
-.showAbout-enter
-  opacity: 0
-  max-height: 0
-
-.showAbout-enter-active
-  opacity: 1
-  max-height: 500px
-  transition: all 1000ms ease-in
-
-.showAbout-leave
-  opacity: 1
-  max-height: 500px
-
-.showAbout-leave-active
-  opacity: 0
-  max-height: 0
-  transition: all 1000ms ease-in

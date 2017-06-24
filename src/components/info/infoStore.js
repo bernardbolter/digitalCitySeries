@@ -9,7 +9,6 @@ class infoStore {
     }
 
     @action toggleSearch = () => {
-      console.log('Search!');
       this.searchButton = !this.searchButton;
     }
 }
