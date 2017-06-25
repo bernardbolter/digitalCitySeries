@@ -30,8 +30,21 @@
         margin: 0 0 3px
         font-style: italic
 
+.about
+  padding: 30px 0
+
+.about-btn
+  color: $text-dark
+  font-weight: normal
+  transition: all 1000ms ease-in-out
+
+.about-btn-on
+  color: $accent
+  font-weight: bold
+  transition: all 1000ms ease-in-out
+
 .nav-search-wrap
-  background: #fff
+  background: $background
   display: block
   position: relative
   width: 100%
@@ -44,12 +57,10 @@
 
     a
       text-decoration: none
-      color: $text-dark
       text-transform: uppercase
       font-size: 14px
       display: block
       line-height: 1.7
-      font-weight: 400
       cursor: pointer
 
     h5
@@ -75,28 +86,47 @@
     opacity: 1
 
 .search-input
-  display: none
+  position: absolute
+  top: 15px
+  right: 60px
+  width: 150px
+  height: 25px
+  font-size: 13px
+  padding-left: 10px
+  color: $text-light
+  opacity: 0
+  transition: opacity 300ms ease-in-out
 
 .search-input-on
-  display: block
+  opacity: 1
+  transition: opacity 300ms ease-in-out
+
+  &:focus
+    outline: none
+    border: 1px solid $accent
+
+.search
+  stroke: $text-light
+  transition: all 300ms ease-in-out
+
+.search-on
+  stroke: $accent
+  transition: all 300ms ease-in-out
 
 #search-button
   cursor: pointer
 
 #search-left-line
-  transition: all 300ms cubic-bezier(.37,0,.64,1)
+  transition: all 300ms ease-in-out
   opacity: 0
-  stroke: $text-light
   stroke-width: 2
 
 #search-right-line
-  transition: all 300ms cubic-bezier(.37,0,.64,1)
+  transition: all 300ms ease-in-out
   transform: translate(-17px, 17px)
-  stroke: $text-light
   stroke-width: 2
 
 #search-circle
-  stroke: $text-light
   stroke-width: 2
 
 // HERLPER CLASSES

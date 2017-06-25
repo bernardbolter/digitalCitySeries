@@ -1,9 +1,12 @@
 // COLORS
 
-$background: lighten( #cdcdcd, 50%);
+$background: #e5e5e5;
+$background-dark: #444444;
+$accent: #cd7d60;
 
 $text-color: #231f20;
 
 $header-color: #121212;
 $text-dark: lighten( $header-color, 20%);
 $text-light: lighten( $header-color, 50%);
+$text-white: #ddd;

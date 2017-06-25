@@ -6,6 +6,8 @@ import {ReactHeight} from 'react-height';
 import About from './about';
 import SearchButton from './searchButton';
 
+import information from './infoStore';
+
 @observer
 export default class Info extends React.Component {
     constructor() {
@@ -14,7 +16,6 @@ export default class Info extends React.Component {
     }
 
     render() {
-
       const { aboutSection,
               toggleAbout,
               searchButton,
@@ -39,7 +40,7 @@ export default class Info extends React.Component {
 
                 <div className="nav-search-wrap">
                   <nav>
-                      <a onClick={toggleAbout}>ABOUT</a>
+                      <a className={aboutSection ? 'about-btn about-btn-on' : 'about-btn'} onClick={toggleAbout}>{aboutSection ? 'CLOSE' : 'ABOUT'}</a>
                       <a href="#" id="navigation-prints">PRINTS</a>
                       <h5 id="navigation-email">email@bernardbolter.com</h5>
                   </nav>
@@ -49,7 +50,7 @@ export default class Info extends React.Component {
                       className={searchButton ? 'info-search info-search-on' : 'info-search'}
                       onClick={toggleSearch}
                     >
-                      <SearchButton />
+                      <SearchButton info = { information }/>
                     </a>
                   </div>
                 </div>

@@ -5,6 +5,7 @@ import Info from './info/info';
 import Art from './art/art';
 
 import information from './info/infoStore';
+import artwork from './art/artStore';
 
 export default class Layout extends React.Component {
 
@@ -13,7 +14,7 @@ export default class Layout extends React.Component {
       <div className="container">
         <Hero />
         <Info info = { information }/>
-        <Art />
+        <Art artwork = { artwork }/>
       </div>
     );
   }
