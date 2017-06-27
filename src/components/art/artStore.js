@@ -1,4 +1,4 @@
-import { action, computed, observable  } from 'mobx';
+import mobx, { action, computed, observable, extendObservable, asMap } from 'mobx';
 import { filter } from 'lodash';
 import axios from 'axios';
 
@@ -19,8 +19,21 @@ class artStore {
         console.log(error);
       });
   }
+
+  @action artworkState(id) {
+    let comp = `compositeOn_${id}`;
+    console.log(comp);
+    let photo = `photoOn_${id}`;
+    // this.artworkStateObject.set(photo, false);
+    // this.artworkStateObject.set(photo, false);
+    // this.artworkStateObject.set(comp, false);
+  }
 }
 
-var artwork = new artStore;
+const artworkStateObject = observable([]);
 
-export default artwork;
+export artworkStateObject
+
+var artworkData = new artStore;
+
+export default artworkData;

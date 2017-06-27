@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 
+import Artwork from './artwork';
+
+import artworkData from './artStore';
+
 @observer
 export default class AllArt extends React.Component {
 
   componentDidMount() {
-    this.props.artwork.loadArtwork();
+    this.props.artworkData.loadArtwork();
   }
 
   render() {
     const { filter,
             filteredArt,
-            artlist
-          } = this.props.artwork;
+            artlist,
+            artworkState,
+            artworkStateArray
+          } = this.props.artworkData;
 
     return (
       <section className="art">
@@ -22,8 +28,8 @@ export default class AllArt extends React.Component {
   }
 
   loadGallery = () => {
-    const artstore = this.props.artwork;
-    if (artstore.isLoading) {
+    const allartData = this.props.artworkData;
+    if (allartData.isLoading) {
       return (
         <div className="allart-loading">
           <img src="./img/reload.gif" />
@@ -33,16 +39,10 @@ export default class AllArt extends React.Component {
     } else {
       return (
         <div>
-        {artstore.artlist.slice().map( art => (
-            <div key={art.id} {...art}>
-              <h1>{art.name}</h1>
-              <h2>{art.contentLocation}</h2>
-              <img src={art.imageMedium} alt={art.title.rendered} />
-              <div>
-                <img src={art.complementaryImageMedium} />
-                <img src={art.secondComplementaryImageMedium} />
-              </div>
-            </div>
+        {allartData.artlist.slice().map( art => (
+
+            <Artwork key={art.id} {...art} artworkData = { artworkData } />
+
           ))
         }
         </div>

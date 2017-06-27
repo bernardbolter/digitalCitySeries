@@ -2,6 +2,6 @@
 @import 'styles/variables';
 @import 'styles/layout';
 @import 'styles/fonts';
-@import 'styles/hero';
-@import 'styles/info';
-@import 'styles/art';
+@import 'components/hero/hero';
+@import 'components/info/info';
+@import 'components/art/art';
