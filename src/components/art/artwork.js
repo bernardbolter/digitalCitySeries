@@ -1,34 +1,34 @@
 import React from 'react';
+import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
+
+import Draggable from 'react-draggable';
 
 @observer
 export default class Artwork extends React.Component {
+  @observable toggleComposite = false;
+  @observable toggleSatellite = false;
+  @observable togglePhoto = false;
+
   constructor(props) {
     super(props);
   }
 
-  componentWillMount = () => {
-    this.props.artworkData.artworkState(this.props.id);
-  }
-
   render() {
-    const { artworkStateObject } = this.props.artworkData;
     return (
       <section className="artwork">
         <div className="artwork-header">
           <h1>{this.props.name}</h1>
           <h2>{this.props.contentLocation}</h2>
         </div>
-        <div className="artwork-composite" onClick={this.toggleComposite}>
-
+        <div className="artwork-composite" onClick={this.clickComposite}>
           {this.showComposite()}
         </div>
         <div className="artwork-extras">
-          <div className="artwork-satellite">
+          <div className="artwork-satellite" onClick={this.clickSatellite}>
             {this.showSatellite()}
           </div>
-          <div className="artwork-photo">
-            {this.tester()}
+          <div className="artwork-photo" onClick={this.clickPhoto}>
             {this.showPhoto()}
           </div>
         </div>
@@ -36,36 +36,55 @@ export default class Artwork extends React.Component {
     );
   }
 
-  toggleComposite = (e) => {
-    console.log(this.props.artworkData.artworkStateObject);
-    this.props.artworkData.artworkStateObject.photo = !this.props.artworkData.artworkStateObject.photo;
-    console.log(this.props.artworkData.artworkStateObject.photo);
-    // this.props.artworkData.artworkStateObject.set("photoOn_4", true);
-    // const tester = this.artworkStateArray.get(compositeOn_4);
-    // console.log(tester);
+  @action clickComposite = () => {
+    this.toggleComposite = !this.toggleComposite;
   }
 
-  tester = () => {
-    if (this.props.artworkData.artworkStateObject === true) {
-      return 'working';
-    } else {
-      return 'not working';
-    }
+  @action clickSatellite = () => {
+    this.toggleSatellite = !this.toggleSatellite;
+  }
+
+  @action clickPhoto = () => {
+    this.togglePhoto = !this.togglePhoto;
   }
 
   showComposite() {
-    return (
-      <img src={this.props.imageMedium} />
-    );
+    if (this.toggleComposite === false) {
+      return (
+        <img src={this.props.imageMedium} />
+      );
+    } else {
+      return (
+        <div className="composite-container">
+          <Draggable>
+            <img className="composite-draggable" src={this.props.image} />
+          </Draggable>
+        </div>
+      );
+    }
+
   }
   showSatellite() {
-    return (
-      <img src={this.props.complementaryImageMedium} />
-    );
+    if (this.toggleSatellite === false ) {
+      return (
+        <img src={this.props.complementaryImageMedium} />
+      );
+    } else {
+      return (
+        <img src={this.props.secondComplementaryImageMedium} />
+      );
+    }
+
   }
   showPhoto() {
-    return (
-      <img src={this.props.secondComplementaryImageMedium} />
-    );
+    if (this.togglePhoto === false ) {
+      return (
+        <img src={this.props.secondComplementaryImageMedium} />
+      );
+    } else {
+      return (
+        <img src={this.props.imageMedium} />
+      );
+    }
   }
 }
