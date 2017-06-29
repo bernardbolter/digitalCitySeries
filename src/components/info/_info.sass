@@ -71,19 +71,55 @@
       margin: 0
       padding: 0
 
+// SEARCH WRAPPER
+
 .search
   display: flex
   flex-direction: row
   justify-content: flex-end
 
-.info-search-on
-  #search-right-line
+// SEARCH BUTTON STYLES
+
+// anchor link
+
+.search-button
+  cursor: pointer
+
+.search-button-on
+
+// svg styles
+
+.search-svg
+  stroke: $text-light
+  transition: all 300ms ease-in-out
+
+.search-svg-on
+  stroke: $accent
+  transition: all 300ms ease-in-out
+
+#search-svg-left-line
+  transition: all 300ms ease-in-out
+  opacity: 0
+  stroke-width: 2
+
+#search-svg-right-line
+  transition: all 300ms ease-in-out
+  transform: translate(-17px, 17px)
+  stroke-width: 2
+
+.search-button-on
+  #search-svg-right-line
     transition: all 300ms ease-in-out
     transform: translate(0px, 0px)
 
-  #search-left-line
+  #search-svg-left-line
     transition: all 300ms ease-in-out
     opacity: 1
+
+#search-svg-circle
+  stroke-width: 2
+
+// SEARCH INPUT
 
 .search-input
   position: absolute
@@ -104,30 +140,6 @@
   &:focus
     outline: none
     border: 1px solid $accent
-
-.search
-  stroke: $text-light
-  transition: all 300ms ease-in-out
-
-.search-on
-  stroke: $accent
-  transition: all 300ms ease-in-out
-
-#search-button
-  cursor: pointer
-
-#search-left-line
-  transition: all 300ms ease-in-out
-  opacity: 0
-  stroke-width: 2
-
-#search-right-line
-  transition: all 300ms ease-in-out
-  transform: translate(-17px, 17px)
-  stroke-width: 2
-
-#search-circle
-  stroke-width: 2
 
 // HERLPER CLASSES
 

@@ -47,7 +47,7 @@ export default class Info extends React.Component {
                   <div className="search">
                     <input className={searchButton ? 'search-input search-input-on filter' : 'search-input filter'} type="text" />
                     <a
-                      className={searchButton ? 'info-search info-search-on' : 'info-search'}
+                      className={searchButton ? 'search-button search-button-on' : 'search-button'}
                       onClick={toggleSearch}
                     >
                       <SearchButton info = { information }/>

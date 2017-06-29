@@ -28,13 +28,61 @@
   img
     width: 100%
 
+// COMPOSITE WINDOW STYLES
+
+.artwork-composite
+  position: relative
+
 .composite-container
   width: 90vw
   height: 90vw
   overflow: hidden
+  display: flex
+  justify-content: center
+  align-items: center
+  background: $text-light
+
+  p
+    font-size: 12px
+    position: absolute
+    color: $text-dark
+    letter-spacing: 0.05em
 
 .composite-draggable
   width: 1000px !important
+  opacity: 0
+
+.composite-draggable-loaded
+  opacity: 1
+  transition: opacity 500ms ease-in
+
+// MAGNIFY BUTTON STYLES
+
+// magnify anchor button
+.magnify-button
+  cursor: pointer
+  background: rgba(255, 255, 255, 0.2)
+  width: 25px
+  height: 25px
+  position: absolute
+  bottom: 0
+  z-index: 1000
+
+.magnify-button-on
+
+// magnify svg styles
+.magnify-svg
+  stroke: $text-dark
+  transition: all 300ms ease-in-out
+
+.magnify-svg-on
+  stroke: $text-dark
+  transition: all 300ms ease-in-out
+
+  #magnify-svg-vertical-line
+    display: none
+
+// ARTWORK EXTRA WINDOWS STYLES
 
 .artwork-extras
   display: flex
