@@ -3,17 +3,16 @@ import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
 
 import Draggable from 'react-draggable';
-
 import Magnify from './magnify';
+import Image from './image';
+import Img from 'react-image';
+import VisibilitySensor from 'react-visibility-sensor';
+
 import { allartData } from './artStore';
 
 @observer
 export default class Artwork extends React.Component {
-  @observable toggleComposite = false;
-  @observable toggleSatellite = false;
-  @observable togglePhoto = false;
-  @observable toggleMagnify = false;
-  @observable largeCompositeLoaded = false;
+  @observable toggleArtworkView = "composite";
 
   constructor(props) {
     super(props);
@@ -34,10 +33,10 @@ export default class Artwork extends React.Component {
         </div>
         <div className="artwork-extras">
           <div className="artwork-satellite" onClick={this.clickSatellite}>
-            {this.showSatellite()}
+            <img src={this.props.complementaryImageMedium} />
           </div>
           <div className="artwork-photo" onClick={this.clickPhoto}>
-            {this.showPhoto()}
+            <img src={this.props.secondComplementaryImageMedium} />
           </div>
         </div>
       </section>
@@ -45,75 +44,72 @@ export default class Artwork extends React.Component {
   }
 
   @action clickComposite = () => {
-    this.toggleComposite = !this.toggleComposite;
-    this.toggleSatellite = false;
-    this.togglePhoto = false;
+    // if (this.toggleArtworkView = 'default') {
+    //   this.toggleArtworkView ='composite';
+    // } else {
+    //   this.toggleArtworkView = 'default';
+    // }
+    this.toggleArtworkView = 'default' ? this.toggleArtworkView ='composite' : this.toggleArtworkView = 'default';
     this.toggleMagnify = !this.toggleMagnify;
-    if (this.largeCompositeLoaded === true) {
-      this.largeCompositeLoaded = false;
-    }
+    console.log(this.toggleArtworkView);
   }
 
   @action clickSatellite = () => {
-    this.toggleSatellite = !this.toggleSatellite;
-    this.toggleComposite = false;
-    this.togglePhoto = false;
+    this.toggleArtworkView = "satellite";
+    console.log(this.toggleArtworkView);
   }
 
   @action clickPhoto = () => {
-    this.togglePhoto = !this.togglePhoto;
-    this.toggleComposite = false;
-    this.toggleSatellite = false;
+    this.toggleArtworkView = "photo";
+    console.log(this.toggleArtworkView);
   }
 
   showComposite() {
-    if (this.toggleComposite === false) {
-      return (
-        <img draggable="false" src={this.props.imageMedium} />
-      );
-    } else {
-      return (
-        <div className={this.largeCompositeLoaded ? 'composite-container composite-container-loading' : 'composite-container'}>
-          {!this.largeCompositeLoaded ? <p>large composite loading...</p> : null }
-          <Draggable   bounds={{left: -250, right: 250, top: -250, bottom: 250}} >
-            <img
-              draggable="false"
-              className={this.largeCompositeLoaded ? 'composite-draggable composite-draggable-loaded' : 'composite-draggable'}
-              onLoad={this.handleImageLoaded}
-              src={this.props.image}
-            />
-          </Draggable>
+    switch(this.toggleArtworkView) {
+      case 'composite':
+        return (
+
+        <div className="composite-container">
+          <Image image={this.props.image} id={this.props.id}/>
         </div>
-      );
-    }
+              );
+      case 'satellite':
+        return <img draggable="false" src={ this.props.complementaryImageMedium } />;
+      // case 'photo':
+      //   return <Image draggable="false" image = { this.props.secondComplementaryImageMedium } />;
+      default:
+        return null;
+      } // end switch
+    } // end showComposite
   }
 
-  handleImageLoaded = () => {
-    console.log('imageloaded');
-    this.largeCompositeLoaded = !this.largeCompositeLoaded;
-  }
-
-  showSatellite() {
-    if (this.toggleSatellite === false ) {
-      return (
-        <img src={this.props.complementaryImageMedium} />
-      );
-    } else {
-      return (
-        <img src={this.props.secondComplementaryImageMedium} />
-      );
-    }
-
-  }
-  showPhoto() {
-    if (this.togglePhoto === false ) {
-      return (
-        <img src={this.props.secondComplementaryImageMedium} />
-      );
-    } else {
-      return (
-        <img src={this.props.imageMedium} />
-      );
-    }
-  }
-}
+//   showSatellite() {
+//     switch(this.toggleArtworkView) {
+//       case
+//
+//
+//
+//
+//     if (this.toggleSatellite === false ) {
+//       return (
+//         <Image image = {this.props.complementaryImageMedium} />
+//       );
+//     } else {
+//       return (
+//         <img src={this.props.secondComplementaryImageMedium} />
+//       );
+//     }
+//
+//   }
+//   showPhoto() {
+//     if (this.togglePhoto === false ) {
+//       return (
+//         <img src={this.props.secondComplementaryImageMedium} />
+//       );
+//     } else {
+//       return (
+//         <img src={this.props.imageMedium} />
+//       );
+//     }
+//   }
+// }

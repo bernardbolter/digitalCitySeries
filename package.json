@@ -22,7 +22,9 @@
     "react-dom": "^15.5.4",
     "react-draggable": "^2.2.6",
     "react-height": "^3.0.0",
-    "react-motion": "^0.5.0"
+    "react-image": "^1.0.1",
+    "react-motion": "^0.5.0",
+    "react-visibility-sensor": "^3.10.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

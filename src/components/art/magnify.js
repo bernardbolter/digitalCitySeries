@@ -8,7 +8,6 @@ export default class Magnify extends React.Component {
   };
 
   render() {
-    console.log(this.props.toggleMagnify);
     const toggleMagnify = this.props.toggleMagnify;
     return (
       <svg className={toggleMagnify ? 'magnify-svg magnify-svg-on' : 'magnify-svg'} id="magnify-svg-button" height="25px" width="25px" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
