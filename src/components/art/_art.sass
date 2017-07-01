@@ -32,6 +32,12 @@
 
 .artwork-composite
   position: relative
+  opacity: 1
+  transition: opacity 500ms ease-in
+
+.artwork-composite-fade
+  opacity: 0
+  transition: opacity 500ms ease-out
 
 .composite-container
   width: 90vw
@@ -53,11 +59,6 @@
 
 .composite-draggable
   width: 1000px !important
-  opacity: 0
-
-.composite-draggable-loaded
-  opacity: 1
-  transition: opacity 500ms ease-in
 
 // MAGNIFY BUTTON STYLES
 
@@ -90,3 +91,9 @@
 .artwork-extras
   display: flex
   flex-direction: row
+  opacity: 1
+  transition: opacity 500ms ease-in
+
+.artwork-extras-fade
+  opacity: 0
+  transition: opacity 500ms ease-out

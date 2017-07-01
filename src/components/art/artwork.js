@@ -1,5 +1,5 @@
 import React from 'react';
-import { action, observable } from 'mobx';
+import { action, observable, autorun } from 'mobx';
 import { observer } from 'mobx-react';
 
 import Draggable from 'react-draggable';
@@ -12,7 +12,8 @@ import { allartData } from './artStore';
 
 @observer
 export default class Artwork extends React.Component {
-  @observable toggleArtworkView = "composite";
+  @observable selectArtworkView = 'composite';
+  @observable fadeOut = false;
 
   constructor(props) {
     super(props);
@@ -25,91 +26,143 @@ export default class Artwork extends React.Component {
           <h1>{this.props.name}</h1>
           <h2>{this.props.contentLocation}</h2>
         </div>
-        <div className="artwork-composite">
-          <div className="magnify-button" onClick={this.clickComposite}>
-            <Magnify toggleMagnify = { this.toggleMagnify }/>
-          </div>
+        <div className={this.fadeOut ? 'artwork-composite artwork-composite-fade' : 'artwork-composite'}>
+          {this.showMagnify()}
           {this.showComposite()}
         </div>
-        <div className="artwork-extras">
-          <div className="artwork-satellite" onClick={this.clickSatellite}>
-            <img src={this.props.complementaryImageMedium} />
-          </div>
-          <div className="artwork-photo" onClick={this.clickPhoto}>
-            <img src={this.props.secondComplementaryImageMedium} />
-          </div>
+        <div className={this.fadeOut ? 'artwork-extras artwork-extras-fade' : 'artwork-extras'}>
+          {this.showSatellite()}
+          {this.showPhoto()}
         </div>
       </section>
     );
   }
 
+  showMagnify = () => {
+    console.log(this.selectArtworkView);
+    if (this.selectArtworkView == 'composite') {
+      console.log('yes comp');
+      return (
+        <div className="magnify-button" onClick={this.clickMagnify}>
+          <Magnify toggleMagnify="minus" />
+        </div>
+      );
+    } else if (this.selectArtworkView == 'magnify') {
+      console.log('yes mag');
+        return (
+          <div className="magnify-button" onClick={this.clickComposite}>
+            <Magnify toggleMagnify="plus" />
+          </div>
+        );
+    } else {
+      null;
+    }
+  }
+
+  // @action clickArtworkView = (view) => {
+  //   this.fadeOut = true;
+  //   setTimeout(() => {
+  //     this.selectArtwork = view;
+  //     this.fadeOut = false;
+  //   }, 500);
+  // }
+
   @action clickComposite = () => {
-    // if (this.toggleArtworkView = 'default') {
-    //   this.toggleArtworkView ='composite';
-    // } else {
-    //   this.toggleArtworkView = 'default';
-    // }
-    this.toggleArtworkView = 'default' ? this.toggleArtworkView ='composite' : this.toggleArtworkView = 'default';
-    this.toggleMagnify = !this.toggleMagnify;
-    console.log(this.toggleArtworkView);
+    this.fadeOut = true;
+    setTimeout(() => {
+      this.selectArtworkView = 'composite';
+      this.fadeOut = false;
+    }, 500);
+  }
+
+  @action clickMagnify = () => {
+    this.fadeOut = true;
+    setTimeout(() => {
+      this.selectArtworkView = 'magnify';
+      this.fadeOut = false;
+    }, 500);
   }
 
   @action clickSatellite = () => {
-    this.toggleArtworkView = "satellite";
-    console.log(this.toggleArtworkView);
+    this.fadeOut = true;
+    setTimeout(() => {
+      this.selectArtworkView = 'satellite';
+      this.fadeOut = false;
+    }, 500);
   }
 
   @action clickPhoto = () => {
-    this.toggleArtworkView = "photo";
-    console.log(this.toggleArtworkView);
+    this.fadeOut = true;
+    setTimeout(() => {
+      this.selectArtworkView = 'photo';
+      this.fadeOut = false;
+    }, 500);
   }
 
-  showComposite() {
-    switch(this.toggleArtworkView) {
-      case 'composite':
-        return (
+  showComposite = () => {
+    if (this.selectArtworkView == 'composite') {
+      return (
+        <Image image={this.props.imageMedium } dragOn={false} />
+      );
+    } else if (this.selectArtworkView == 'magnify') {
+      return (
+        <Image image={this.props.image} dragOn={true} />
+      );
+    } else if (this.selectArtworkView == 'satellite') {
+      return (
+        <Image image={this.props.complementaryImage} dragOn={false} />
+      );
+    } else if (this.selectArtworkView == 'photo') {
+      return (
+        <Image image = { this.props.secondComplementaryImage } dragOn={false}/>
+      );
+    }
+  }
 
-        <div className="composite-container">
-          <Image image={this.props.image} id={this.props.id}/>
+  showSatellite = () => {
+    if (this.selectArtworkView == 'composite') {
+      return (
+        <div className="artwork-satellite" onClick={this.clickSatellite}>
+          <Image image={this.props.complementaryImageMedium} dragOn={false} />
         </div>
-              );
-      case 'satellite':
-        return <img draggable="false" src={ this.props.complementaryImageMedium } />;
-      // case 'photo':
-      //   return <Image draggable="false" image = { this.props.secondComplementaryImageMedium } />;
-      default:
-        return null;
-      } // end switch
-    } // end showComposite
+      );
+    } else if (this.selectArtworkView == 'magnify') {
+      return (
+        <div>Composite Info</div>
+      );
+    }else if (this.selectArtworkView == 'satellite') {
+      return (
+        <div onClick={this.clickComposite}>Close Satellite</div>
+      );
+    } else if (this.selectArtworkView == 'photo') {
+      return (
+        <div>Photo Info</div>
+      );
+    }
   }
 
-//   showSatellite() {
-//     switch(this.toggleArtworkView) {
-//       case
-//
-//
-//
-//
-//     if (this.toggleSatellite === false ) {
-//       return (
-//         <Image image = {this.props.complementaryImageMedium} />
-//       );
-//     } else {
-//       return (
-//         <img src={this.props.secondComplementaryImageMedium} />
-//       );
-//     }
-//
-//   }
-//   showPhoto() {
-//     if (this.togglePhoto === false ) {
-//       return (
-//         <img src={this.props.secondComplementaryImageMedium} />
-//       );
-//     } else {
-//       return (
-//         <img src={this.props.imageMedium} />
-//       );
-//     }
-//   }
-// }
+  showPhoto = () => {
+    if (this.selectArtworkView == 'composite') {
+      return (
+        <div className="artwork-photo" onClick={this.clickPhoto}>
+          <Image image = { this.props.secondComplementaryImageMedium } dragOn={false}/>
+        </div>
+      );
+    } else if (this.selectArtworkView == 'magnify') {
+      return (
+        <div className="artwork-photo" onClick={this.clickComposite}>
+          <Image image={this.props.thumbnailUrl } dragOn={false} />
+        </div>
+      );
+    } else if (this.selectArtworkView == 'satellite') {
+      return (
+        <div>City Information</div>
+      );
+    } else if (this.selectArtworkView == 'photo') {
+      return (
+        <div onClick={this.clickComposite}>Close Photo</div>
+      );
+    }
+  }
+
+}
