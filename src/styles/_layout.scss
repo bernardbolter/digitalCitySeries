@@ -5,7 +5,8 @@ html {
 }
 
 // BREAKPOINTS
-$mobile: 321px;
-$tablet: 768px;
-$desktop: 1024px;
-$bigscreen: 1440px;
+$phone-up: 321px;
+$tablet-portrait-up: 600px;
+$tablet-landscape-up: 900px;
+$desktop-up: 1200px;
+$big-desktop-up: 1800px;

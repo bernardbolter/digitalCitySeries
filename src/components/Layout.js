@@ -1,7 +1,7 @@
 import React from 'react';
 import DevTools from 'mobx-react-devtools';
 
-import Hero from './hero/hero';
+import Header from './header/header';
 import Info from './info/info';
 import Art from './art/allart';
 
@@ -13,7 +13,7 @@ export default class Layout extends React.Component {
   render() {
     return (
       <div className="container">
-        <Hero />
+        <Header />
         <Info info = { information } />
         <Art allartData = { allartData } />
         <DevTools />
