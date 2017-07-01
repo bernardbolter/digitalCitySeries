@@ -2,11 +2,8 @@ import React from 'react';
 import { action, observable, autorun } from 'mobx';
 import { observer } from 'mobx-react';
 
-import Draggable from 'react-draggable';
 import Magnify from './magnify';
 import Image from './image';
-import Img from 'react-image';
-import VisibilitySensor from 'react-visibility-sensor';
 
 import { allartData } from './artStore';
 
@@ -26,29 +23,28 @@ export default class Artwork extends React.Component {
           <h1>{this.props.name}</h1>
           <h2>{this.props.contentLocation}</h2>
         </div>
-        <div className={this.fadeOut ? 'artwork-composite artwork-composite-fade' : 'artwork-composite'}>
-          {this.showMagnify()}
-          {this.showComposite()}
-        </div>
-        <div className={this.fadeOut ? 'artwork-extras artwork-extras-fade' : 'artwork-extras'}>
-          {this.showSatellite()}
-          {this.showPhoto()}
+        <div className="artwork-container">
+          <div className={this.fadeOut ? 'artwork-composite artwork-composite-fade' : 'artwork-composite'}>
+            {this.showMagnify()}
+            {this.showComposite()}
+          </div>
+          <div className={this.fadeOut ? 'artwork-extras artwork-extras-fade' : 'artwork-extras'}>
+            {this.showSatellite()}
+            {this.showPhoto()}
+          </div>
         </div>
       </section>
     );
   }
 
   showMagnify = () => {
-    console.log(this.selectArtworkView);
     if (this.selectArtworkView == 'composite') {
-      console.log('yes comp');
       return (
         <div className="magnify-button" onClick={this.clickMagnify}>
           <Magnify toggleMagnify="minus" />
         </div>
       );
     } else if (this.selectArtworkView == 'magnify') {
-      console.log('yes mag');
         return (
           <div className="magnify-button" onClick={this.clickComposite}>
             <Magnify toggleMagnify="plus" />
@@ -58,14 +54,6 @@ export default class Artwork extends React.Component {
       null;
     }
   }
-
-  // @action clickArtworkView = (view) => {
-  //   this.fadeOut = true;
-  //   setTimeout(() => {
-  //     this.selectArtwork = view;
-  //     this.fadeOut = false;
-  //   }, 500);
-  // }
 
   @action clickComposite = () => {
     this.fadeOut = true;

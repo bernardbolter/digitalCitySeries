@@ -3,7 +3,6 @@ import React from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 import Draggable from 'react-draggable';
 import Img from 'react-image';
-import LazyLoad from 'react-lazy-load';
 
 export default class Image extends React.Component {
   constructor(props) {
