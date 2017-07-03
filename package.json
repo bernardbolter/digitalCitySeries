@@ -19,12 +19,15 @@
     "mobx-react-devtools": "^4.2.15",
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.6.0",
+    "react-audio-player": "^0.6.0",
     "react-dom": "^15.5.4",
     "react-draggable": "^2.2.6",
     "react-height": "^3.0.0",
     "react-image": "^1.0.1",
     "react-lazy-load": "^3.0.12",
     "react-motion": "^0.5.0",
+    "react-resize-aware": "^2.4.4",
+    "react-resize-detector": "^0.5.0",
     "react-visibility-sensor": "^3.10.0"
   },
   "devDependencies": {

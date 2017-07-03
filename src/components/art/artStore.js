@@ -6,6 +6,7 @@ class artStore {
   @observable artlist = [];
   @observable isLoading = true;
   @observable filter = '';
+  @observable widthOfWindow = window.innerWidth;
 
   @action loadArtwork() {
     this.isLoading = true;

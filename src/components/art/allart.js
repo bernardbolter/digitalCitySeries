@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
+import { action } from 'mobx';
 
 import Artwork from './artwork';
 
 import { allartData } from './artStore';
+import ReactResizeDetector from 'react-resize-detector';
 
 @observer
 export default class AllArt extends React.Component {
@@ -13,11 +15,6 @@ export default class AllArt extends React.Component {
   }
 
   render() {
-    const { filter,
-            isLoading,
-            artlist
-          } = this.props.allartData;
-
     return (
       <section className="art">
         {this.loadGallery()}
@@ -37,7 +34,7 @@ export default class AllArt extends React.Component {
       return (
         <div>
         {this.props.allartData.artlist.slice().map( art => (
-            <Artwork key={art.id} {...art} artworkData = { allartData } />
+            <Artwork key={art.id} {...art} />
           ))
         }
         </div>

@@ -3744,6 +3744,10 @@ react-addons-css-transition-group@^15.6.0:
   dependencies:
     react-transition-group "^1.2.0"
 
+react-audio-player@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-audio-player/-/react-audio-player-0.6.0.tgz#fbfe657918710b9fbd368fb91deb2eefec6c8d5d"
+
 react-dom@^15.5.4:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.1.tgz#2cb0ed4191038e53c209eb3a79a23e2a4cf99470"
@@ -3787,6 +3791,16 @@ react-motion@^0.5.0:
     performance-now "^0.2.0"
     prop-types "^15.5.8"
     raf "^3.1.0"
+
+react-resize-aware@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/react-resize-aware/-/react-resize-aware-2.4.4.tgz#80e4fc6aeacac7a4721284299c402ad65c93555a"
+
+react-resize-detector@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-resize-detector/-/react-resize-detector-0.5.0.tgz#e1eaaba654c08008dc22dc70c75ab6d3f2e82624"
+  dependencies:
+    prop-types "^15.5.8"
 
 react-transition-group@^1.2.0:
   version "1.2.0"
