@@ -12,6 +12,10 @@
   display: flex
   flex-direction: column
 
+  @media (min-width: $tablet-portrait-up)
+    width: 94%
+    padding: 3%
+
 .artwork-header
   width: 100%
   display: flex
@@ -89,6 +93,14 @@
     top: 50%
     left: 50%
     position: absolute
+
+    @media (min-width: $tablet-landscape-up)
+      width: 1500px !important
+      margin-top: -750px
+      margin-left: -750px
+      top: 50%
+      left: 50%
+      position: absolute
 
   p
     font-size: 12px

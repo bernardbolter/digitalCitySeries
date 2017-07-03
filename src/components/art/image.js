@@ -11,7 +11,7 @@ import ReactResizeDetector from 'react-resize-detector';
 export default class Image extends React.Component {
   @observable windowWidth = window.innerWidth;
   @observable imageOffset = ((1000 - (this.windowWidth * 0.92)) / 2);
-  @observable newBounds = {
+  @observable draggableBounds = {
       left: -this.imageOffset,
       right: this.imageOffset,
       top: -this.imageOffset,
@@ -23,36 +23,115 @@ export default class Image extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    this.selectImage();
+    this.selectOffset();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.selectImage();
+    this.selectOffset();
+  }
+
   render() {
+    // this.selectImage();
     if (this.props.dragOn) {
       return (
         <div className="composite-container">
           <ReactResizeDetector handleWidth onResize={this.resizeImageOffset} />
-          <Draggable bounds={this.newBounds}>
-            <Img draggable="false" src={this.selectImage()} loader={<img src="src/gfx/loader.gif" />} unloader={<img src="src/gfx/loader.gif" />} />
+          <Draggable bounds={this.draggableBounds}>
+            <Img draggable="false" src={this.imageURL} loader={<img src="src/gfx/loader.gif" />} unloader={<img src="src/gfx/loader.gif" />} />
           </Draggable>
         </div>
       );
     } else {
       return (
-          <Img draggable="false" src={this.selectImage()} loader={<img src="src/gfx/loader.gif" />} unloader={<img src="src/gfx/loader.gif" />} />
+        <div className="image-container">
+        <ReactResizeDetector handleWidth onResize={this.resizeImageOffset} />
+          <Img draggable="false" src={this.imageURL} loader={<img src="src/gfx/loader.gif" />} unloader={<img src="src/gfx/loader.gif" />} />
+        </div>
       );
     }
   }
 
   @action selectImage = () => {
-    this.imageURL = this.props.imageSRC.image;
-    return this.imageURL;
+    this.windowWidth = window.innerWidth;
+    if (this.props.view == "composite-composite") {
+      if (this.windowWidth > 1646) {
+        this.imageURL = this.props.imageSRC.image;
+      } else if (this.windowWidth > 540) {
+        this.imageURL = this.props.imageSRC.imageLarge;
+      } else {
+        this.imageURL = this.props.imageSRC.imageMedium;
+      }
+
+    } else if (this.props.view == "composite-magnify") {
+      if (this.windowWidth > 899) {
+        this.imageURL = this.props.imageSRC.image;
+      } else {
+        this.imageURL = this.props.imageSRC.imageLarge;
+      }
+
+    } else if (this.props.view == "composite-satellite") {
+      if (this.windowWidth > 1646) {
+        this.imageURL = this.props.imageSRC.complementaryImage;
+      } else if (this.windowWidth > 540) {
+        this.imageURL = this.props.imageSRC.complementaryImageLarge;
+      } else {
+        this.imageURL = this.props.imageSRC.complementaryImageMedium;
+      }
+
+    } else if (this.props.view == "composite-photo") {
+      if (this.windowWidth > 1646) {
+        this.imageURL = this.props.imageSRC.secondComplementaryImage;
+      } else if (this.windowWidth > 540) {
+        this.imageURL = this.props.imageSRC.secondComplementaryImageLarge;
+      } else {
+        this.imageURL = this.props.imageSRC.secondComplementaryImageMedium;
+      }
+
+    } else if (this.props.view == "satellite") {
+      if (this.windowWidth > 1700) {
+        this.imageURL = this.props.imageSRC.complementaryImageLarge;
+      } else {
+        this.imageURL = this.props.imageSRC.complementaryImageMedium;
+      }
+
+    } else if (this.props.view == "photo") {
+      if (this.windowWidth > 1700) {
+        this.imageURL = this.props.imageSRC.secondComplementaryImageMedium;
+      } else {
+        this.imageURL = this.props.imageSRC.secondComplementaryImageMedium;
+      }
+
+    } else if (this.props.view == "raw") {
+      this.imageURL = this.props.imageSRC.rawImage;
+    }
+  }
+
+  @action selectOffset = () => {
+    if (this.windowWidth > 899 ) {
+      this.imageOffset = ((1500 - (this.windowWidth * 0.62)) / 2);
+      this.draggableBounds = {
+        left: -this.imageOffset,
+        right: this.imageOffset,
+        top: -this.imageOffset,
+        bottom: this.imageOffset
+      };
+    } else {
+      this.imageOffset = ((1000 - (this.windowWidth * 0.94)) / 2);
+      this.draggableBounds = {
+        left: -this.imageOffset,
+        right: this.imageOffset,
+        top: -this.imageOffset,
+        bottom: this.imageOffset
+      };
+    }
   }
 
   @action resizeImageOffset = () => {
     this.windowWidth = window.innerWidth;
-    this.imageOffset = ((1000 - (this.windowWidth * 0.92)) / 2);
-    this.newBounds = {
-      left: -this.imageOffset,
-      right: this.imageOffset,
-      top: -this.imageOffset,
-      bottom: this.imageOffset
-    };
+    this.selectImage();
+    this.selectOffset();
   }
 }

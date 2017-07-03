@@ -124,7 +124,7 @@ export default class Artwork extends React.Component {
       );
     } else if (this.selectArtworkView == 'satellite') {
       return (
-        <Image imageSRC={this.imageSources} dragOn={false} view="composite-satelite" />
+        <Image imageSRC={this.imageSources} dragOn={false} view="composite-satellite" />
       );
     } else if (this.selectArtworkView == 'photo') {
       return (
