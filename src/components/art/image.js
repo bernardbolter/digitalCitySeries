@@ -18,6 +18,7 @@ export default class Image extends React.Component {
       bottom: this.imageOffset
     };
   @observable imageURL = '';
+  @observable preloader = 'large';
 
   constructor(props) {
     super(props)
@@ -40,7 +41,20 @@ export default class Image extends React.Component {
         <div className="composite-container">
           <ReactResizeDetector handleWidth onResize={this.resizeImageOffset} />
           <Draggable bounds={this.draggableBounds}>
-            <Img draggable="false" src={this.imageURL} loader={<img src="src/gfx/loader.gif" />} unloader={<img src="src/gfx/loader.gif" />} />
+            <Img draggable="false" src={this.imageURL}
+                loader={
+                  <div className="image-loader">
+                    <img className="image-loader" src="src/gfx/globe-loader.gif" />
+                    <p>`loading image...`</p>
+                  </div>
+                      }
+                unloader={
+                  <div className="image-loader-container">
+                    <img src="src/gfx/globe-loader.gif" />
+                    <p>loading image...</p>
+                  </div>
+                }
+            />
           </Draggable>
         </div>
       );
@@ -48,7 +62,16 @@ export default class Image extends React.Component {
       return (
         <div className="image-container">
         <ReactResizeDetector handleWidth onResize={this.resizeImageOffset} />
-          <Img draggable="false" src={this.imageURL} loader={<img src="src/gfx/loader.gif" />} unloader={<img src="src/gfx/loader.gif" />} />
+          <Img draggable="false"
+                src={this.imageURL}
+                loader={<img src="src/gfx/globe-loader.gif" />}
+                unloader={
+                  <div className="image-loader-container">
+                    <img src="src/gfx/square-loader.gif" />
+                    <p>loading image...</p>
+                  </div>
+                }
+          />
         </div>
       );
     }
@@ -133,5 +156,14 @@ export default class Image extends React.Component {
     this.windowWidth = window.innerWidth;
     this.selectImage();
     this.selectOffset();
+  }
+
+  @action selectPreloader = () => {
+    if (this.props.view == ('composite-composite' || 'composite-magnify' || 'composite-satellite' || 'composite-photo')) {
+        this.preloader = 'globe';
+      } else {
+        this.preloader = 'square';
+      }
+    console.log('pre - ' + this.preloader);
   }
 }
