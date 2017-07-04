@@ -29,6 +29,11 @@ module.exports = {
         }
       },
       {
+        test: /\.json$/,
+        exclude: /nod_modules/,
+        loader: 'json-loader'
+      },
+      {
         test: /\.(png|jpg)$/,
         loader: 'file-loader',
         options: {

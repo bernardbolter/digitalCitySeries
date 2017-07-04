@@ -1,0 +1,114 @@
+{
+  "basel" : {
+      "coordinates" : "47°34′N 7°36′E",
+      "area" : "23.91 km2 (9.23 sq mi)",
+      "population" : "176,117",
+      "density" : "7,400/km2 (19,000/sq mi)",
+      "elevation" : "254 m (833 ft)"
+  },
+  "london" : {
+      "coordinates" : "51°30′26″N 0°7′39″W",
+      "area" : "1,572 km2 (607 sq mi)",
+      "population" : "8,787,892",
+      "density" : "5,590/km2 (14,500/sq mi)",
+      "elevation" : "35 m (115 ft)"
+  },
+  "venice" : {
+      "coordinates" : "45°26′15″N 12°20′9″E",
+      "area" : "414.57 km2 (160.07 sq mi)",
+      "population" : "264,579",
+      "density" : "640/km2 (1,700/sq mi)",
+      "elevation" : "1 m (3 ft)"
+  },
+  "los angeles" : {
+      "coordinates" : "34°03′N 118°15′W",
+      "area" : "502.76 sq mi (1,302.15 km2)",
+      "population" : "12,150,996",
+      "density" : "8,483.02/sq mi (3,275.32/km2)",
+      "elevation" : "305 ft (93 m)"
+  },
+  "las vegas" : {
+      "coordinates" : "36°10′30″N 115°08′11″W",
+      "area" : "135.8 sq mi (352 km2)",
+      "population" : "632,912",
+      "density" : "4,300/sq mi (1,700/km2)",
+      "elevation" : "2,001 ft (610 m)"
+  },
+  "marseille" : {
+      "coordinates" : "43°17′47″N 5°22′12″E",
+      "area" : "240.62 km2 (92.90 sq mi)",
+      "population" : "855,393",
+      "density" : "3,600/km2 (9,200/sq mi)",
+      "elevation" : "33 ft (11 m)"
+  },
+  "hong kong" : {
+      "coordinates" : "22°17′07″ N , 114°09′27″ E",
+      "area" : "2,755 km2 (1,064 sq mi)",
+      "population" : "7,374,900",
+      "density" : "6,544/km2 (16,948.9/sq mi)",
+      "elevation" : "22 ft (7 m)"
+  },
+  "stockholm" : {
+      "coordinates" : "59°19′46″N 18°4′7″E",
+      "area" : "188 km2 (73 sq mi)",
+      "population" : "935,619",
+      "density" : "5,000/km2 (13,000/sq mi)",
+      "elevation" : "0 m (0 ft)"
+  },
+  "lisbon" : {
+      "coordinates" : "38°42′50″N 9°8′22″W",
+      "area" : "100.05 km2 (39 sq mi)",
+      "population" : "545,245",
+      "density" : "6,458/km2 (16,726/sq mi)",
+      "elevation" : "2 m (7 ft)"
+  },
+  "paris" : {
+      "coordinates" : "48°51′24″N 2°21′03″E",
+      "area" : "105.4 km2 (40.7 sq mi)",
+      "population" : "2,229,621",
+      "density" : "21,000/km2 (55,000/sq mi)",
+      "elevation" : "35 m (115 ft)"
+  },
+  "berlin" : {
+      "coordinates" : "52°30′26″N 13°8′45″E",
+      "area" : "891.7 km2 (344.3 sq mi)",
+      "population" : "3,671,000",
+      "density" : "4,100/km2 (11,000/sq mi)",
+      "elevation" : "34 m (112 ft)"
+  },
+  "copenhagen" : {
+      "coordinates" : "55°40′34″N 12°34′06″E",
+      "area" : "86.39 km2 (33.36 sq mi)",
+      "population" : "1,295,686",
+      "density" : "669.1/km² (1,733/sq mi)",
+      "elevation" : "1 m (3 ft)"
+  },
+  "hamburg" : {
+      "coordinates" : "53°33′55″N 10°00′05″E",
+      "area" : "755 km2 (292 sq mi)",
+      "population" : "1,787,408",
+      "density" : "2,400/km2 (6,100/sq mi)",
+      "elevation" : "1 m (3 ft)"
+  },
+  "san francisco" : {
+      "coordinates" : "37°47′N 122°25′W",
+      "area" : "231.89 sq mi (600.59 km2)",
+      "population" : "870,887",
+      "density" : "18,581/sq mi (7,174/km2)",
+      "elevation" : "52 ft (16 m)"
+  },
+  "bangkok" : {
+      "coordinates" : "13°45′N 100°28′E",
+      "area" : "1,568.737 km2 (605.693 sq mi)",
+      "population" : "8,280,925",
+      "density" : "5,300/km2 (14,000/sq mi)",
+      "elevation" : "1.5 m (4.9 ft)"
+  },
+  "madrid" : {
+      "coordinates" : "40°23′N 3°43′W",
+      "area" : "604.3 km2 (233.3 sq mi)",
+      "population" : "3,141,991",
+      "density" : "5,390/km2 (14,000/sq mi)",
+      "elevation" : "667 m (2,188 ft)"
+  }
+}

@@ -2,7 +2,10 @@ import React from 'react';
 import { action, observable, autorun } from 'mobx';
 import { observer } from 'mobx-react';
 
+import cityData from "./cityData.json";
+
 import Magnify from './magnify';
+import CloseButton from './closeButton';
 import Image from './image';
 
 @observer
@@ -37,7 +40,7 @@ export default class Artwork extends React.Component {
             <h1>{this.props.name}</h1>
             <h2>{this.props.contentLocation}</h2>
           </div>
-          <img src={(this.props.url ? this.props.url : null)} />
+          <img src={this.props.url} />
         </div>
         <div className="artwork-container">
           <div className={this.fadeOut ? 'artwork-composite artwork-composite-fade' : 'artwork-composite'}>
@@ -152,11 +155,15 @@ export default class Artwork extends React.Component {
       );
     }else if (this.selectArtworkView == 'satellite') {
       return (
-        <div onClick={this.clickComposite}>Close Satellite</div>
+        <div className="close-button-container" onClick={this.clickComposite}>
+            <CloseButton />
+        </div>
       );
     } else if (this.selectArtworkView == 'photo') {
       return (
-        <div>Photo Info</div>
+        <div className="close-button-container" onClick={this.clickComposite}>
+            <CloseButton />
+        </div>
       );
     }
   }
@@ -181,12 +188,22 @@ export default class Artwork extends React.Component {
           );
         }
     } else if (this.selectArtworkView == 'satellite') {
+      const city = this.props.name.toLowerCase();
       return (
-        <div>City Information</div>
+        <div className="city-info">
+          <p>Coordinates: {cityData[city].coordinates}</p>
+          <p>Area: {cityData[city].area}</p>
+          <p>Population: {cityData[city].population}</p>
+          <p>Density: {cityData[city].density}</p>
+          <p>Elevation: {cityData[city].elevation}</p>
+        </div>
       );
     } else if (this.selectArtworkView == 'photo') {
       return (
-        <div onClick={this.clickComposite}>Close Photo</div>
+        <div className="photo-info">
+          <h2>{this.props.secondComplementaryArtworkTitle}</h2>
+          <h3>photograph | {this.props.dateCreated}</h3>
+        </div>
       );
     }
   }
