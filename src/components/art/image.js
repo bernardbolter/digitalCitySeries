@@ -36,7 +36,6 @@ export default class Image extends React.Component {
   }
 
   render() {
-    // this.selectImage();
     if (this.props.dragOn) {
       return (
         <div className="composite-container">
@@ -170,6 +169,5 @@ export default class Image extends React.Component {
       } else {
         this.globePreloader = false;
       }
-    console.log('pre - ' + this.globePreloader);
   }
 }

@@ -5,8 +5,7 @@ import Header from './header/header';
 import Info from './info/info';
 import Art from './art/allart';
 
-import information from './info/infoStore';
-import { allartData } from './art/artStore';
+import { storeData } from './store';
 
 export default class Layout extends React.Component {
 
@@ -14,8 +13,8 @@ export default class Layout extends React.Component {
     return (
       <div className="container">
         <Header />
-        <Info info = { information } />
-        <Art allartData = { allartData } />
+        <Info store = { storeData } />
+        <Art store = { storeData } />
         <DevTools />
       </div>
     );

@@ -4,14 +4,15 @@ import { action } from 'mobx';
 
 import Artwork from './artwork';
 
-import { allartData } from './artStore';
+import { storeData } from '../store';
 import ReactResizeDetector from 'react-resize-detector';
 
 @observer
 export default class AllArt extends React.Component {
 
   componentDidMount() {
-    this.props.allartData.loadArtwork();
+    this.props.store.loadArtwork();
+    console.log(this.props.store.artlist);
   }
 
   render() {
@@ -23,7 +24,7 @@ export default class AllArt extends React.Component {
   }
 
   loadGallery = () => {
-    if (this.props.allartData.isLoading) {
+    if (this.props.store.isLoading) {
       return (
         <div className="allart-loading">
           <img src="./img/reload.gif" />
@@ -33,7 +34,7 @@ export default class AllArt extends React.Component {
     } else {
       return (
         <div>
-        {this.props.allartData.artlist.slice().map( art => (
+        {this.props.store.artlist.slice().map( art => (
             <Artwork key={art.id} {...art} />
           ))
         }

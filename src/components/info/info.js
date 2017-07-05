@@ -6,7 +6,7 @@ import {ReactHeight} from 'react-height';
 import About from './about';
 import SearchButton from './searchButton';
 
-import information from './infoStore';
+import { storeData } from '../store';
 
 @observer
 export default class Info extends React.Component {
@@ -19,8 +19,9 @@ export default class Info extends React.Component {
       const { aboutSection,
               toggleAbout,
               searchButton,
-              toggleSearch
-            } = this.props.info;
+              toggleSearch,
+              filter
+            } = this.props.store;
 
         return (
             <section className="info">
@@ -45,16 +46,21 @@ export default class Info extends React.Component {
                       <h5 id="navigation-email">email@bernardbolter.com</h5>
                   </nav>
                   <div className="search">
-                    <input className={searchButton ? 'search-input search-input-on filter' : 'search-input filter'} type="text" />
+                    <input className={searchButton ? 'search-input search-input-on filter' : 'search-input filter'} type="text" value={filter} onChange={this.goFilter} />
                     <a
                       className={searchButton ? 'search-button search-button-on' : 'search-button'}
                       onClick={toggleSearch}
                     >
-                      <SearchButton info = { information }/>
+                      <SearchButton store = { storeData }/>
                     </a>
                   </div>
                 </div>
             </section>
         );
     }
+
+    goFilter = (e) => {
+    this.props.store.filter = e.target.value;
+    console.log(this.props.store.filter);
+  }
 }
