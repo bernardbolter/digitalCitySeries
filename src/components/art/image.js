@@ -18,7 +18,7 @@ export default class Image extends React.Component {
       bottom: this.imageOffset
     };
   @observable imageURL = '';
-  @observable preloader = 'large';
+  @observable globePreloader = true;
 
   constructor(props) {
     super(props)
@@ -27,6 +27,7 @@ export default class Image extends React.Component {
   componentDidMount() {
     this.selectImage();
     this.selectOffset();
+    this.selectPreloader();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,15 +44,15 @@ export default class Image extends React.Component {
           <Draggable bounds={this.draggableBounds}>
             <Img draggable="false" src={this.imageURL}
                 loader={
-                  <div className="image-loader">
-                    <img className="image-loader" src="src/gfx/globe-loader.gif" />
-                    <p>`loading image...`</p>
-                  </div>
-                      }
-                unloader={
                   <div className="image-loader-container">
                     <img src="src/gfx/globe-loader.gif" />
                     <p>loading image...</p>
+                  </div>
+                }
+                unloader={
+                  <div className="image-loader-container-unable">
+                    <img src="src/gfx/globe-loader.gif" />
+                    <p>unable to load image, try to refresh or come back later, sorry, I'm just an artist :-)</p>
                   </div>
                 }
             />
@@ -64,11 +65,16 @@ export default class Image extends React.Component {
         <ReactResizeDetector handleWidth onResize={this.resizeImageOffset} />
           <Img draggable="false"
                 src={this.imageURL}
-                loader={<img src="src/gfx/globe-loader.gif" />}
-                unloader={
-                  <div className="image-loader-container">
-                    <img src="src/gfx/square-loader.gif" />
+                loader={
+                  <div className={this.globePreloader ? 'image-loader-container' : 'image-loader-container-square'}>
+                    <img src={this.globePreloader ? 'src/gfx/globe-loader.gif' : 'src/gfx/square-loader.gif'} />
                     <p>loading image...</p>
+                  </div>
+                }
+                unloader={
+                  <div className={this.globePreloader ? 'image-loader-container-unable' : 'image-loader-container-square-unable'}>
+                    <img src={this.globePreloader ? 'src/gfx/globe-loader.gif' : 'src/gfx/square-loader.gif'} />
+                    <p>unable to load image, try to refresh or come back later, sorry, I'm just an artist :-)</p>
                   </div>
                 }
           />
@@ -160,10 +166,10 @@ export default class Image extends React.Component {
 
   @action selectPreloader = () => {
     if (this.props.view == ('composite-composite' || 'composite-magnify' || 'composite-satellite' || 'composite-photo')) {
-        this.preloader = 'globe';
+        this.globePreloader = true;
       } else {
-        this.preloader = 'square';
+        this.globePreloader = false;
       }
-    console.log('pre - ' + this.preloader);
+    console.log('pre - ' + this.globePreloader);
   }
 }
