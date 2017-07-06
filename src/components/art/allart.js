@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { action } from 'mobx';
+import { isEmpty } from 'lodash';
 
 import Artwork from './artwork';
 
@@ -12,7 +13,6 @@ export default class AllArt extends React.Component {
 
   componentDidMount() {
     this.props.store.loadArtwork();
-    console.log(this.props.store.artlist);
   }
 
   render() {
@@ -26,20 +26,28 @@ export default class AllArt extends React.Component {
   loadGallery = () => {
     if (this.props.store.isLoading) {
       return (
-        <div className="allart-loading">
-          <img src="./img/reload.gif" />
+        <div className="artwork-loading">
+          <img src="./gfx/square-loader.gif" />
           <p>Loading Artwork...</p>
         </div>
       );
     } else {
-      return (
-        <div>
-        {this.props.store.artlist.slice().map( art => (
-            <Artwork key={art.id} {...art} />
-          ))
-        }
-        </div>
-      );
+      if (_.isEmpty(this.props.store.filteredArt)) {
+        return (
+          <div className="no-artwork">
+            <h3>No results found from your search of {this.props.store.filter}</h3>
+          </div>
+        );
+      } else {
+        return (
+          <div>
+          {this.props.store.filteredArt.slice().map( art => (
+              <Artwork key={art.id} {...art} />
+            ))
+          }
+          </div>
+        );
+      }
     }
   }
 }

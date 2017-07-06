@@ -5,7 +5,7 @@
   "main": "gateway.js",
   "scripts": {
     "serve": "webpack-dev-server --progress --color --watch",
-    "outbound": "NODE_ENV=production npm run clean && webpack -p",
+    "outbound": "npm run clean && webpack -p --config ./webpack.config.prod.js",
     "clean": "rimraf outbound",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,24 +14,20 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "install": "^0.10.1",
     "json-loader": "^0.5.4",
-    "jsonp": "^0.2.1",
     "mobx": "^3.1.11",
     "mobx-react": "^4.2.1",
     "mobx-react-devtools": "^4.2.15",
+    "npm": "^5.1.0",
     "react": "^15.5.4",
-    "react-addons-css-transition-group": "^15.6.0",
-    "react-audio-player": "^0.6.0",
     "react-dom": "^15.5.4",
     "react-draggable": "^2.2.6",
     "react-height": "^3.0.0",
     "react-image": "^1.0.1",
-    "react-lazy-load": "^3.0.12",
     "react-motion": "^0.5.0",
-    "react-resize-aware": "^2.4.4",
     "react-resize-detector": "^0.5.0",
-    "react-visibility-sensor": "^3.10.0",
-    "wikipedia-js": "^0.0.6"
+    "webpack-bundle-analyzer": "^2.8.2"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

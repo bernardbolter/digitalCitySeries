@@ -12,7 +12,7 @@ module.exports = {
     path: path.resolve(__dirname, 'outbound'),
     filename: 'mashup.js'
   },
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   module: {
     loaders: [
       {
@@ -35,10 +35,10 @@ module.exports = {
         loader: 'json-loader'
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'file-loader',
         options: {
-          name: './gfx/[hash].[ext]'
+          name: './gfx/[name].[ext]'
         }
       }
     ]
@@ -47,7 +47,9 @@ module.exports = {
     new ExtractTextPlugin({ filename: 'style.css', allChunks: true }),
     new HtmlWebpackPLugin({
       template: 'src/index.html'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"'
     })
-    // new BundleAnalyzerPlugin()
   ]
 };

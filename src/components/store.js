@@ -1,5 +1,5 @@
 import { action, observable, computed } from 'mobx';
-import { filter, shuffle } from 'lodash';
+import { filter, shuffle, isEmpty } from 'lodash';
 import axios from 'axios';
 
 class Store {
@@ -21,7 +21,6 @@ class Store {
     axios.get('http://artwork.bernardbolter.com/wp-json/wp/v2/artwork?per_page=100')
       .then(results =>  {
         this.artlist = _.filter(results.data, {series: 'dcs'});
-        console.log(this.artlist);
         this.isLoading = false;
       })
       .catch(function (error) {
@@ -32,17 +31,17 @@ class Store {
   @computed get filteredArt() {
     const matchesFilter = new RegExp(this.filter, 'i');
     let artworkFiltered = this.artlist.filter(art => !this.filter || matchesFilter.test(art.title.rendered));
+    let artworkSorted = [];
 
-    this.artSorted = artworkFiltered;
-    console.log(this.artSorted);
+    if (this.ogChecked == true) {
+      artworkSorted = artworkFiltered.reverse();
+    } else if (this.randomChecked == true) {
+      artworkSorted = _.shuffle(artworkFiltered);
+    } else {
+      artworkSorted = artworkFiltered;
+    }
 
-    // if (this.ogChecked == true) {
-    //   artworkSorted = artworkFiltered.reverse();
-    // } else if (this.randomChecked == true) {
-    //   artworkSorted = _.shuffle(artworkFiltered);
-    // } else {
-    //   artworkSorted = artworkFiltered;
-    // }
+    return artworkSorted;
   }
 
   @action toggleAbout = () => {
@@ -51,6 +50,10 @@ class Store {
 
   @action toggleSearch = () => {
     this.searchButton = !this.searchButton;
+    console.log('search click');
+    if (_.isEmpty(this.filteredArt)) {
+      this.filter = '';
+    }
   }
 }
 

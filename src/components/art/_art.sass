@@ -1,10 +1,47 @@
 .art
   width: 100%
   margin: 0
-  padding: 0
+  padding: 0 0 150px
   background: $background-dark
   position: relative
   z-index: 300
+
+.no-artwork
+  width: 100%
+  height: 50vh
+  margin: 0
+  padding: 0
+  background: $background-dark
+
+  h3
+    margin: 0 auto
+    width: 60%
+    position: relative
+    top: 50px
+    color: $text-light
+    font-size: 18px
+    text-align: center
+    font-weight: normal
+
+.artwork-loading
+  width: 100%
+  height: 50vh
+  margin: 0
+  padding: 0
+  background: $background-dark
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+
+  img
+    width: 70px
+    height: 70px
+    margin: 20px 0
+
+  p
+    font-size: 18px
+    color: $text-light
 
 .artwork
   width: 92%
@@ -29,7 +66,7 @@
     margin: 15% 0 5px
 
   @media (min-width: $tablet-landscape-up)
-    margin: 15% 0 10px
+    margin: 80px 0 10px
 
   img
     height: 15px
@@ -530,7 +567,7 @@
     font-size: 11px
     position: absolute
     color: $text-light
-    margin: 0 auto
+    margin: 15px auto 0
     letter-spacing: 0.05em
 
 .image-loader-container-unable
