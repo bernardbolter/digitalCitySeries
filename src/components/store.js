@@ -21,6 +21,7 @@ class Store {
     axios.get('http://artwork.bernardbolter.com/wp-json/wp/v2/artwork?per_page=100')
       .then(results =>  {
         this.artlist = _.filter(results.data, {series: 'dcs'});
+        console.log(results.data);
         this.isLoading = false;
       })
       .catch(function (error) {

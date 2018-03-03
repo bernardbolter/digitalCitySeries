@@ -13,6 +13,7 @@ export default class AllArt extends React.Component {
 
   componentDidMount() {
     this.props.store.loadArtwork();
+    console.log(this.props);
   }
 
   render() {
@@ -27,7 +28,7 @@ export default class AllArt extends React.Component {
     if (this.props.store.isLoading) {
       return (
         <div className="artwork-loading">
-          <img src="./gfx/square-loader.gif" />
+          <img src="gfx/square-loader.gif" />
           <p>Loading Artwork...</p>
         </div>
       );
