@@ -28,7 +28,7 @@ export default class AllArt extends React.Component {
     if (this.props.store.isLoading) {
       return (
         <div className="artwork-loading">
-          <img src="gfx/square-loader.gif" />
+          <img src="http://bernardbolter.com/artwork/wp-content/uploads/square-loader.gif" />
           <p>Loading Artwork...</p>
         </div>
       );

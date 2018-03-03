@@ -44,13 +44,13 @@ export default class Image extends React.Component {
             <Img draggable="false" src={this.imageURL}
                 loader={
                   <div className="image-loader-container">
-                    <img src="gfx/globe-loader.gif" />
+                    <img src="https://bernardbolter.com/artwork/wp-content/uploads/globe-loader.gif" />
                     <p>loading image...</p>
                   </div>
                 }
                 unloader={
                   <div className="image-loader-container-unable">
-                    <img src="gfx/globe-loader.gif" />
+                    <img src="https://bernardbolter.com/artwork/wp-content/uploads/globe-loader.gif" />
                     <p>unable to load image, try to refresh or come back later, sorry, I'm just an artist :-)</p>
                   </div>
                 }
@@ -66,13 +66,13 @@ export default class Image extends React.Component {
                 src={this.imageURL}
                 loader={
                   <div className={this.globePreloader ? 'image-loader-container' : 'image-loader-container-square'}>
-                    <img src={this.globePreloader ? 'gfx/globe-loader.gif' : 'gfx/square-loader.gif'} />
+                    <img src={this.globePreloader ? 'https://bernardbolter.com/artwork/wp-content/uploads/globe-loader.gif' : 'https://bernardbolter.com/artwork/wp-content/uploads//square-loader.gif'} />
                     <p>loading image...</p>
                   </div>
                 }
                 unloader={
                   <div className={this.globePreloader ? 'image-loader-container-unable' : 'image-loader-container-square-unable'}>
-                    <img src={this.globePreloader ? 'gfx/globe-loader.gif' : 'gfx/square-loader.gif'} />
+                    <img src={this.globePreloader ? 'https://bernardbolter.com/artwork/wp-content/uploads//globe-loader.gif' : 'https://bernardbolter.com/artwork/wp-content/uploads//square-loader.gif'} />
                     <p>unable to load image, try to refresh or come back later, sorry, I'm just an artist :-)</p>
                   </div>
                 }
