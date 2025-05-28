@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  font-family: var(--font-family-default); /* Apply default font */
+  background-color: var(--background); /* Apply default background to html element */
+}
+body{margin:0}main{display:block
+}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:vis
+ible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transp
+arent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:u
+nderline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,
+monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;
+position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{bo
+rder-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-s
+ize:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{t
+ext-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appea
+rance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[typ
+e=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0
+}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-foc
+usring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35e
+m .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-widt
+h:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{ov
+erflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=n
+umber]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{heigh
+t:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=sear
+ch]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-but
+ton{-webkit-appearance:button;font:inherit}details{display:block}summary{display
+:list-item}template{display:none}[hidden]{display:none}
+/*# sourceMappingURL=normalize.min.css.map */
+
+:root {
+  /* Custom properties from _variables.scss */
+  --background: #e5e5e5;
+  --black: #000000;
+  --white: #ffffff;
+  --blue: #2039ec;
+  --red: #d80000;
+  --grey: #c4c4c4;
+  --darkgrey: #7c7c7c;
+  --font-family-default: 'Noto Sans', sans-serif; /* Renamed from --font-family for clarity */
+
+  /* Default Vite properties (some might be overridden or unused) */
+  font-family: var(--font-family-default); /* Ensure default font is applied, overriding Vite's initial */
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark; /* Let browser know we support light/dark modes */
+
+  /* Base colors, typically for light mode or if no preference */
+  color: var(--black);
+  background-color: var(--white); /* Default to white background for :root */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Light mode specific styles */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--black);
+    background-color: var(--white);
+  }
+  a {
+    font-weight: 500;
+    color: #646cff; /* Vite's default light blue */
+    text-decoration: inherit;
+  }
+  a:hover {
+    color: #535bf2;
+  }
+  button {
+    background-color: #f9f9f9; /* Light grey */
+    color: var(--black);
+  }
+}
+
+/* Dark mode specific styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: var(--white);
+    background-color: #242424; /* Vite's default dark background */
+  }
+  a {
+    font-weight: 500;
+    color: #809fff; /* A lighter blue for dark mode */
+    text-decoration: inherit;
+  }
+  a:hover {
+    color: #648cff;
+  }
+  button {
+    background-color: #1a1a1a; /* Vite's default dark button */
+    color: var(--white);
+  }
+}
+
+/* Remove redundant Vite default styles for #app if they conflict or are not needed */
+/* The #app styling provided by Vite for centering content might still be useful */
+/*
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+*/
+/* The body styling from Vite to center content also might be context-dependent */
+/*
+body {
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+*/
+
