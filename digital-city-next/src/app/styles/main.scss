@@ -1,0 +1,11 @@
+@import './partials/normalize';
+@import './partials/variables';
+@import './partials/layout';
+@import './partials/fonts';
+
+// Component styles - paths will need to be verified when components are migrated.
+// For now, commenting them out to prevent build errors as these files do not exist yet.
+// @import './components/header/header';
+// @import './components/info/info';
+// @import './components/art/art';
+// @import './components/footer/footer';
